@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Filmes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Filmes Cadastrados</h1>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Gênero</th>
+                    <th>Ano de Lançamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="filme : ${filmes}">
+                    <td th:text="${filme.id}"></td>
+                    <td th:text="${filme.titulo}"></td>
+                    <td th:text="${filme.genero}"></td>
+                    <td th:text="${filme.anoLancamento}"></td>
+                    <td>
+                        <a th:href="@{/detalhes-filme/{id}(id=${filme.id})}" class="btn btn-info">Detalhes</a>
+                        <a th:href="@{/adicionar-analise/{id}(id=${filme.id})}" class="btn btn-warning">Adicionar Análise</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/cadastrar-filme" class="btn btn-success mt-3">Cadastrar Novo Filme</a>
+    </div>
+</body>
+</html>

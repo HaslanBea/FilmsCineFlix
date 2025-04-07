@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Detalhes do Filme</h1>
+        <div>
+            <h2 th:text="${filme.titulo}">Título do Filme</h2>
+            <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}">Sinopse do filme</span></p>
+            <p><strong>Gênero:</strong> <span th:text="${filme.genero}">Gênero do filme</span></p>
+            <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.anoLancamento}">Ano de lançamento</span></p>
+        </div>
+
+        <h3>Análises</h3>
+        <div th:each="analise : ${filme.analis}">
+            <p><strong>Nota:</strong> <span th:text="${analise.nota}">Nota</span></p>
+            <p><strong>Análise:</strong> <span th:text="${analise.analise}">Análise do filme</span></p>
+        </div>
+
+        <h3>Adicionar Análise</h3>
+        <form action="#" th:action="@{/analise/adicionar}" method="post">
+            <input type="hidden" name="filmeId" th:value="${filme.id}"/>
+            <label for="nota">Nota:</label>
+            <input type="number" id="nota" name="nota" min="1" max="5" required/>
+            <label for="analise">Análise:</label>
+            <textarea id="analise" name="analise" required></textarea>
+            <button type="submit">Adicionar Análise</button>
+        </form>
+
+        <a href="/filmes">Voltar para a lista de filmes</a>
+    </div>
+</body>
+</html>

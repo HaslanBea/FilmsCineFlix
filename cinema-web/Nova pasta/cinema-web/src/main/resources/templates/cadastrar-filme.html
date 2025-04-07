@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Filme</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Cadastrar Novo Filme</h1>
+    <form action="#" th:action="@{/filmes}" th:object="${filme}" method="post">
+        <div>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" th:field="*{titulo}" required />
+        </div>
+        <div>
+            <label for="sinopse">Sinopse:</label>
+            <textarea id="sinopse" th:field="*{sinopse}" required></textarea>
+        </div>
+        <div>
+            <label for="genero">Gênero:</label>
+            <input type="text" id="genero" th:field="*{genero}" required />
+        </div>
+        <div>
+            <label for="anoLancamento">Ano de Lançamento:</label>
+            <input type="number" id="anoLancamento" th:field="*{anoLancamento}" required />
+        </div>
+        <div>
+            <button type="submit">Cadastrar Filme</button>
+        </div>
+    </form>
+    <a href="/filmes">Voltar para a lista de filmes</a>
+</body>
+</html>
